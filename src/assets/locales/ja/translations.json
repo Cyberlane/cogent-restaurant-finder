@@ -1,5 +1,24 @@
 {
   "home": {
     "title": "レストラン検索へようこそ"
+  },
+  "rating": {
+    "unrated": "未評価"
+  },
+  "card": {
+    "viewDetails": "レストランの詳細を見る"
+  },
+  "sort": {
+    "sortBy": "並び替え",
+    "ratings": "評価",
+    "distance": "距離"
+  },
+  "filter": {
+    "category": "カテゴリー",
+    "budget": "予算"
+  },
+  "search": {
+    "placeholder": "ラーメン、寿司などを検索...",
+    "randomSearch": "おまかせ検索"
   }
 }

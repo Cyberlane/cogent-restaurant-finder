@@ -11,9 +11,23 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
+import { Route as MapImport } from './routes/map'
+import { Route as DetailsImport } from './routes/details'
 import { Route as IndexImport } from './routes/index'
 
 // Create/Update Routes
+
+const MapRoute = MapImport.update({
+  id: '/map',
+  path: '/map',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const DetailsRoute = DetailsImport.update({
+  id: '/details',
+  path: '/details',
+  getParentRoute: () => rootRoute,
+} as any)
 
 const IndexRoute = IndexImport.update({
   id: '/',
@@ -32,6 +46,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexImport
       parentRoute: typeof rootRoute
     }
+    '/details': {
+      id: '/details'
+      path: '/details'
+      fullPath: '/details'
+      preLoaderRoute: typeof DetailsImport
+      parentRoute: typeof rootRoute
+    }
+    '/map': {
+      id: '/map'
+      path: '/map'
+      fullPath: '/map'
+      preLoaderRoute: typeof MapImport
+      parentRoute: typeof rootRoute
+    }
   }
 }
 
@@ -39,32 +67,42 @@ declare module '@tanstack/react-router' {
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/details': typeof DetailsRoute
+  '/map': typeof MapRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/details': typeof DetailsRoute
+  '/map': typeof MapRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
+  '/details': typeof DetailsRoute
+  '/map': typeof MapRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/details' | '/map'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/details' | '/map'
+  id: '__root__' | '/' | '/details' | '/map'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  DetailsRoute: typeof DetailsRoute
+  MapRoute: typeof MapRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  DetailsRoute: DetailsRoute,
+  MapRoute: MapRoute,
 }
 
 export const routeTree = rootRoute
@@ -77,11 +115,19 @@ export const routeTree = rootRoute
     "__root__": {
       "filePath": "__root.tsx",
       "children": [
-        "/"
+        "/",
+        "/details",
+        "/map"
       ]
     },
     "/": {
       "filePath": "index.tsx"
+    },
+    "/details": {
+      "filePath": "details.tsx"
+    },
+    "/map": {
+      "filePath": "map.tsx"
     }
   }
 }

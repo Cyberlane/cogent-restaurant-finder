@@ -1,5 +1,24 @@
 {
   "home": {
     "title": "Welcome to the Restaurant Finder"
+  },
+  "rating": {
+    "unrated": "Unrated"
+  },
+  "card": {
+    "viewDetails": "View Details"
+  },
+  "sort": {
+    "sortBy": "Sort by",
+    "ratings": "Ratings",
+    "distance": "Distance"
+  },
+  "filter": {
+    "category": "Category",
+    "budget": "Budget"
+  },
+  "search": {
+    "placeholder": "Search for ramen, sushi, etc...",
+    "randomSearch": "I'm Feeling Lucky"
   }
 }
