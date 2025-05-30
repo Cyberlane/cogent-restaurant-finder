@@ -1,4 +1,5 @@
 import { Button, Card, Group, Image, Rating, Text } from '@mantine/core';
+import { useNavigate } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 
 import type { Restaurant } from '../types/foursquare.type';
@@ -11,6 +12,8 @@ export type RestaurantCardProps = {
 const RestaurantCard = (props: RestaurantCardProps) => {
   const { restaurant } = props;
   const { t } = useTranslation();
+  const navigate = useNavigate();
+
   const [photo] = restaurant.photos ?? [];
   const photoUrl = photo ? assemblePhotoUrl(photo, 320) : null;
 
@@ -33,7 +36,12 @@ const RestaurantCard = (props: RestaurantCardProps) => {
         mt="md"
         fullWidth
         variant="light"
-        // onClick={() => goToDetails(restaurant.id)}
+        onClick={() =>
+          navigate({
+            to: '/$id',
+            params: { id: restaurant.fsq_id },
+          })
+        }
       >
         {t('card.viewDetails')}
       </Button>

@@ -1,5 +1,8 @@
+import { useParams } from '@tanstack/react-router';
+
 const DetailsPage = () => {
-  return <div>TODO</div>;
+  const params = useParams({ from: '/$id' });
+  return <div>TODO: {params.id}</div>;
 };
 
 export default DetailsPage;
