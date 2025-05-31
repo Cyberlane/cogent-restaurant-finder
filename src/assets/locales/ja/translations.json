@@ -2,11 +2,21 @@
   "home": {
     "title": "レストラン検索へようこそ"
   },
+  "map": {
+    "officeName": "Cogent Labs"
+  },
   "rating": {
     "unrated": "未評価"
   },
   "card": {
-    "viewDetails": "レストランの詳細を見る"
+    "viewDetails": "レストランの詳細を見る",
+    "tips": "ヒント"
+  },
+  "tabs": {
+    "overview": "概要",
+    "photos": "写真",
+    "tips": "ヒント",
+    "map": "地図"
   },
   "sort": {
     "sortBy": "並び替え",
@@ -16,6 +26,20 @@
   "filter": {
     "category": "カテゴリー",
     "budget": "予算"
+  },
+  "category": {
+    "all": "すべて",
+    "restaurant": "レストラン",
+    "foodCourt": "フードコート",
+    "foodTruck": "フードトラック",
+    "foodStand": "屋台"
+  },
+  "budget": {
+    "all": "すべて",
+    "cheap": "安い",
+    "moderate": "普通",
+    "expensive": "高い",
+    "veryExpensive": "とても高い"
   },
   "search": {
     "placeholder": "ラーメン、寿司などを検索...",

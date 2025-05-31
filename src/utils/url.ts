@@ -1,4 +1,4 @@
-import type { PhotoResult } from '../types/foursquare.type';
+import type { Photo } from '../types/foursquare.type';
 
 export const joinUrl = (prefix: string, suffix: string): string => {
   const trimmedPrefix = prefix.replace(/\/+$/, '');
@@ -7,7 +7,7 @@ export const joinUrl = (prefix: string, suffix: string): string => {
   return `${trimmedPrefix}/${trimmedSuffix}`;
 };
 
-export const assemblePhotoUrl = (photo: PhotoResult, max: number): string => {
+export const assemblePhotoUrl = (photo: Photo, max: number): string => {
   const scaleFactor = max / photo.height;
   const scaledHeight = max;
   const scaledWidth = Math.floor(photo.width * scaleFactor);

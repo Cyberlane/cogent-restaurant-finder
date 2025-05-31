@@ -7,14 +7,19 @@ export type Restaurant = {
   name: string;
   geocodes: GeoCodeResult;
   categories: CategoryResult[];
-  photos?: PhotoResult[];
-  tips?: TipResult[];
+  photos?: Photo[];
+  tips?: Tip[];
   menu?: string;
-  location?: LocationResult;
+  location?: Location;
   rating?: number; // 0.0 - 10.0
   price?: Price;
   distance: number;
   link: string; // hypermedia for details
+  stats: {
+    total_photos: number;
+    total_ratings: number;
+    total_tips: number;
+  };
 };
 
 export type Category =
@@ -76,7 +81,7 @@ export type CategoryResult = {
   plural_name: string;
 };
 
-export type PhotoResult = {
+export type Photo = {
   id: string;
   created_at: string;
   prefix: string;
@@ -84,20 +89,15 @@ export type PhotoResult = {
   width: number;
   height: number;
   classifications: string[];
-  tip: TipResult;
+  tip: Tip;
 };
 
-export type TipResult = {
-  id: string;
+export type Tip = {
   created_at: string;
   text: string;
-  url: string;
-  lang: string;
-  agree_count: number;
-  disagree_count: number;
 };
 
-export type LocationResult = {
+export type Location = {
   address: string;
   address_extended: string;
   admin_region: string;

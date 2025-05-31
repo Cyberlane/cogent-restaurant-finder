@@ -1,8 +1,62 @@
+import { Container, Group, Loader, Tabs, Text } from '@mantine/core';
 import { useParams } from '@tanstack/react-router';
+import { useTranslation } from 'react-i18next';
+
+import PhotoGrid from '../components/PhotoGrid';
+import Rating from '../components/Rating';
+import RestaurantAddress from '../components/RestaurantAddress';
+import RestaurantMap from '../components/RestaurantMap';
+import Overview from '../components/RestaurantOverview';
+import RestaurantPrice from '../components/RestaurantPrice';
+import TipList from '../components/TipsList';
+import { useRestaurantDetails } from '../hooks/useRestaurantDetails';
 
 const DetailsPage = () => {
   const params = useParams({ from: '/$id' });
-  return <div>TODO: {params.id}</div>;
+  const { data: details, isLoading } = useRestaurantDetails(params.id);
+  const { t } = useTranslation();
+
+  if (isLoading || details == null) {
+    return <Loader />;
+  }
+
+  return (
+    <Container size="sm" py="xl">
+      <Text size="xl" w={700} mt="md">
+        {details.name}
+      </Text>
+      <Group mt="xs">
+        <Rating rating={details.rating} />
+        <Text size="sm" c="dimmed">
+          ({details.rating})
+        </Text>
+      </Group>
+      <RestaurantPrice price={details.price} />
+      <RestaurantAddress location={details.location} />
+      {/* keepMounted is needed to prevent a render issue with the map */}
+      <Tabs mt="lg" defaultValue="overview" keepMounted={false}>
+        <Tabs.List>
+          <Tabs.Tab value="overview">{t('tabs.overview')}</Tabs.Tab>
+          <Tabs.Tab value="photos">{t('tabs.photos')}</Tabs.Tab>
+          <Tabs.Tab value="tips">{t('tabs.tips')}</Tabs.Tab>
+          <Tabs.Tab value="map">{t('tabs.map')}</Tabs.Tab>
+        </Tabs.List>
+
+        <Tabs.Panel value="overview" pt="xs">
+          <Overview restaurant={details} />
+        </Tabs.Panel>
+        <Tabs.Panel value="photos" pt="xs">
+          <PhotoGrid photos={details.photos ?? []} />
+        </Tabs.Panel>
+        <Tabs.Panel value="tips" pt="xs">
+          <TipList restaurantId={params.id} tips={details.tips ?? []} />
+        </Tabs.Panel>
+        <Tabs.Panel value="map" pt="xs" style={{ height: '500px' }}>
+          <RestaurantMap restaurant={details} />
+        </Tabs.Panel>
+      </Tabs>
+    </Container>
+  );
 };
 
 export default DetailsPage;

@@ -1,7 +1,7 @@
 import { Button, Container, Group, Loader, SimpleGrid } from '@mantine/core';
 import { useTranslation } from 'react-i18next';
 
-import Filters from '../components/Filters';
+import Filters from '../components/Filters/Filters';
 import RestaurantCard from '../components/RestaurantCard';
 import SearchBar from '../components/SearchBar';
 import Sort from '../components/Sort';

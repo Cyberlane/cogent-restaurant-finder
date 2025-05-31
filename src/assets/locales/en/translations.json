@@ -2,11 +2,21 @@
   "home": {
     "title": "Welcome to the Restaurant Finder"
   },
+  "map": {
+    "officeName": "Cogent Labs"
+  },
   "rating": {
     "unrated": "Unrated"
   },
   "card": {
-    "viewDetails": "View Details"
+    "viewDetails": "View Details",
+    "tips": "Tips"
+  },
+  "tabs": {
+    "overview": "Overview",
+    "photos": "Photos",
+    "tips": "Tips",
+    "map": "Map"
   },
   "sort": {
     "sortBy": "Sort by",
@@ -16,6 +26,20 @@
   "filter": {
     "category": "Category",
     "budget": "Budget"
+  },
+  "category": {
+    "all": "All",
+    "restaurant": "Restaurant",
+    "foodCourt": "Food Court",
+    "foodTruck": "Food Truck",
+    "foodStand": "Food Stand"
+  },
+  "budget": {
+    "all": "All",
+    "cheap": "Cheap",
+    "moderate": "Moderate",
+    "expensive": "Expensive",
+    "veryExpensive": "Very Expensive"
   },
   "search": {
     "placeholder": "Search for ramen, sushi, etc...",

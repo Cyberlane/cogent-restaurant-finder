@@ -5,6 +5,7 @@ import type {
   OpenAt,
   OpenNow,
   Price,
+  Restaurant,
   SearchResults,
   SortBy,
 } from '../types/foursquare.type';
@@ -12,13 +13,19 @@ import type {
 const AllCategories = Object.values(Categories).join(',');
 const AllFields = [
   'fsq_id',
+  'name',
   'price',
+  'geocodes',
+  'location',
+  'categories',
   'menu',
+  'distance',
   'description',
   'email',
   'tel',
   'website',
   'verified',
+  'social_media',
   'hours',
   'hours_popular',
   'rating',
@@ -152,17 +159,13 @@ export class FourSquareApi {
     return result;
   }
 
-  public async getPlaceDetails(fsq_id: string): Promise<unknown> {
-    const result = await this.get<unknown>({
-      path: fsq_id,
+  public async getPlaceDetails(fsq_id: string): Promise<Restaurant> {
+    const params = new URLSearchParams({
+      fields: AllFields,
     });
-
-    return result;
-  }
-
-  public async getPlacePhotos(fsq_id: string): Promise<unknown> {
-    const result = await this.get<unknown>({
-      path: `${fsq_id}/photos`,
+    const result = await this.get<Restaurant>({
+      path: fsq_id,
+      queryParams: params,
     });
 
     return result;
