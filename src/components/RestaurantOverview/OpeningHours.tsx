@@ -42,6 +42,9 @@ export type OpeningHoursProps = {
 
 const OpeningHours = ({ openingHours }: OpeningHoursProps) => {
   const { t } = useTranslation();
+  if (openingHours.length === 0) {
+    return null;
+  }
   return (
     <Table>
       <Table.Thead>
@@ -53,7 +56,7 @@ const OpeningHours = ({ openingHours }: OpeningHoursProps) => {
       </Table.Thead>
       <Table.Tbody>
         {openingHours.map((d) => (
-          <HourRow key={`opening-hours-${d.day}`} day={d} />
+          <HourRow key={`opening-hours-${d.day}-${d.open}`} day={d} />
         ))}
       </Table.Tbody>
     </Table>

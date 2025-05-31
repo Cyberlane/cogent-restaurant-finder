@@ -24,13 +24,13 @@ export type Restaurant = {
     display: string;
     is_local_holiday: boolean;
     open_now: boolean;
-    regular: RegularHours[];
+    regular?: RegularHours[];
   };
   hours_popular: RegularHours[];
-  tastes: string[];
+  tastes?: string[];
   website?: string;
   features: {
-    food_and_drink: {
+    food_and_drink?: {
       meals: Meals;
     };
     services: Services;

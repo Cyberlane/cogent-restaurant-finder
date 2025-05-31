@@ -1,7 +1,8 @@
-import { Container, Group, Loader } from '@mantine/core';
+import { Container, Group, Loader, Tabs } from '@mantine/core';
 
 import Filters from '../components/Filters/Filters';
 import RandomButton from '../components/RandomButton';
+import RestaurantListMap from '../components/ResultMap';
 import SearchBar from '../components/SearchBar';
 import Results from '../components/SearchResults';
 import Sort from '../components/Sort';
@@ -23,7 +24,18 @@ const HomePage = () => {
       {isLoading || restaurants == null ? (
         <Loader />
       ) : (
-        <Results results={restaurants} />
+        <Tabs mt="lg" defaultValue="list" keepMounted={false}>
+          <Tabs.List>
+            <Tabs.Tab value="list">List</Tabs.Tab>
+            <Tabs.Tab value="map">Map</Tabs.Tab>
+          </Tabs.List>
+          <Tabs.Panel value="list" pt="xs">
+            <Results results={restaurants} />
+          </Tabs.Panel>
+          <Tabs.Panel value="map" pt="xs">
+            <RestaurantListMap restaurants={restaurants.results ?? []} />
+          </Tabs.Panel>
+        </Tabs>
       )}
     </Container>
   );

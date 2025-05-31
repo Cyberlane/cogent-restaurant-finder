@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import type { Meals as MealsType } from '../../types/foursquare.type';
 
 export type MealsProps = {
-  meals: MealsType;
+  meals: MealsType | undefined;
 };
 
 const Icon = ({ value }: { value: boolean }) => {
@@ -14,6 +14,11 @@ const Icon = ({ value }: { value: boolean }) => {
 
 const Meals = ({ meals }: MealsProps) => {
   const { t } = useTranslation();
+
+  if (meals == null) {
+    return null;
+  }
+
   return (
     <Table>
       <Table.Tbody>

@@ -14,11 +14,16 @@ export type OverviewProps = {
 };
 
 const Overview = ({ restaurant }: OverviewProps) => {
+  const tastes = restaurant.tastes ?? [];
+  const meals = restaurant.features.food_and_drink?.meals;
+  const regularHours = restaurant.hours?.regular ?? [];
   return (
     <Paper>
-      <Paper shadow="md" p="md" mb="md">
-        <Tastes tastes={restaurant.tastes} />
-      </Paper>
+      {tastes.length > 0 ? (
+        <Paper shadow="md" p="md" mb="md">
+          <Tastes tastes={tastes} />
+        </Paper>
+      ) : null}
       <Paper shadow="md" p="md" mb="md">
         <Website website={restaurant.website} />
         <Menu menu={restaurant.menu} />
@@ -27,12 +32,16 @@ const Overview = ({ restaurant }: OverviewProps) => {
       <Paper shadow="md" p="md" mb="md">
         <OpenNow isOpen={restaurant.hours.open_now} />
       </Paper>
-      <Paper shadow="md" p="md" mb="md">
-        <Meals meals={restaurant.features.food_and_drink.meals} />
-      </Paper>
-      <Paper shadow="md" p="md" mb="md">
-        <OpeningHours openingHours={restaurant.hours.regular} />
-      </Paper>
+      {meals != null ? (
+        <Paper shadow="md" p="md" mb="md">
+          <Meals meals={meals} />
+        </Paper>
+      ) : null}
+      {regularHours.length > 0 ? (
+        <Paper shadow="md" p="md" mb="md">
+          <OpeningHours openingHours={regularHours} />
+        </Paper>
+      ) : null}
     </Paper>
   );
 };

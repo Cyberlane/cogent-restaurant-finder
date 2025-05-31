@@ -5,6 +5,9 @@ export type TastesProps = {
 };
 
 const Tastes = ({ tastes }: TastesProps) => {
+  if (tastes.length === 0) {
+    return null;
+  }
   return (
     <div>
       {tastes.map((taste) => (
