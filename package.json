@@ -8,7 +8,8 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "lint": "biome check",
-    "format": "biome format"
+    "format": "biome format",
+    "test": "vitest src/"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
@@ -22,6 +23,7 @@
     "@types/react-dom": "^19.1.5",
     "@vitejs/plugin-react-swc": "^3.10.0",
     "autoprefixer": "^10.4.21",
+    "jsdom": "^26.1.0",
     "postcss": "^8.5.4",
     "tailwind-preset-mantine": "^2.1.0",
     "tailwindcss": "^4.1.8",
