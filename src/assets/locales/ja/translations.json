@@ -12,6 +12,27 @@
     "viewDetails": "レストランの詳細を見る",
     "tips": "ヒント"
   },
+  "overview": {
+    "open": "営業中",
+    "closed": "閉店",
+    "currentStatus": "レストランは現在",
+    "menu": "メニュー",
+    "website": "ウェブサイト",
+    "dayOfWeek": "曜日",
+    "openingTime": "開店時間",
+    "closingTime": "閉店時間",
+    "acceptCreditCards": "クレジットカード利用可？",
+    "meals": {
+      "barSnacks": "バースナック",
+      "breakfast": "朝食",
+      "brunch": "ブランチ",
+      "dessert": "デザート",
+      "dinner": "ディナー",
+      "happyHour": "ハッピーアワー",
+      "lunch": "ランチ",
+      "tastingMenu": "テイスティングメニュー"
+    }
+  },
   "tabs": {
     "overview": "概要",
     "photos": "写真",

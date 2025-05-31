@@ -12,6 +12,27 @@
     "viewDetails": "View Details",
     "tips": "Tips"
   },
+  "overview": {
+    "open": "Open",
+    "closed": "Closed",
+    "currentStatus": "Restaurant is currently",
+    "menu": "Menu",
+    "website": "Website",
+    "dayOfWeek": "Day of the week",
+    "openingTime": "Opening Time",
+    "closingTime": "Closing Time",
+    "acceptCreditCards": "Accepts Credit Cards?",
+    "meals": {
+      "barSnacks": "Bar Snacks",
+      "breakfast": "Breakfast",
+      "brunch": "Brunch",
+      "dessert": "Dessert",
+      "dinner": "Dinner",
+      "happyHour": "Happy Hour",
+      "lunch": "Lunch",
+      "tastingMenu": "Tasting Menu"
+    }
+  },
   "tabs": {
     "overview": "Overview",
     "photos": "Photos",

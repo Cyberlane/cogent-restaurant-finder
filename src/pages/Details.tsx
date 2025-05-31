@@ -6,7 +6,7 @@ import PhotoGrid from '../components/PhotoGrid';
 import Rating from '../components/Rating';
 import RestaurantAddress from '../components/RestaurantAddress';
 import RestaurantMap from '../components/RestaurantMap';
-import Overview from '../components/RestaurantOverview';
+import Overview from '../components/RestaurantOverview/RestaurantOverview';
 import RestaurantPrice from '../components/RestaurantPrice';
 import TipList from '../components/TipsList';
 import { useRestaurantDetails } from '../hooks/useRestaurantDetails';
@@ -17,7 +17,11 @@ const DetailsPage = () => {
   const { t } = useTranslation();
 
   if (isLoading || details == null) {
-    return <Loader />;
+    return (
+      <Container size="sm" py="xl">
+        <Loader />
+      </Container>
+    );
   }
 
   return (

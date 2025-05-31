@@ -20,6 +20,22 @@ export type Restaurant = {
     total_ratings: number;
     total_tips: number;
   };
+  hours: {
+    display: string;
+    is_local_holiday: boolean;
+    open_now: boolean;
+    regular: RegularHours[];
+  };
+  hours_popular: RegularHours[];
+  tastes: string[];
+  website?: string;
+  features: {
+    food_and_drink: {
+      meals: Meals;
+    };
+    services: Services;
+    payment: Payment;
+  };
 };
 
 export type Category =
@@ -32,6 +48,35 @@ export const Categories: Record<Category, number> = {
   'Food Court': 13052,
   'Food Truck': 13054,
   'Food Stand': 13053,
+};
+
+export type Services = {
+  delivery: boolean;
+  takeout: boolean;
+};
+
+export type Payment = {
+  credit_cards: {
+    accepts_credit_cards: boolean;
+    amex: boolean;
+  };
+};
+
+export type Meals = {
+  bar_snacks: boolean;
+  breakfast: boolean;
+  brunch: boolean;
+  dessert: boolean;
+  dinner: boolean;
+  happy_hour: boolean;
+  lunch: boolean;
+  tasting_menu: boolean;
+};
+
+export type RegularHours = {
+  day: 1 | 2 | 3 | 4 | 5 | 6 | 7;
+  open: string;
+  close: string;
 };
 
 // Price range between 1 (most affordable) and 4 (most expensive)
