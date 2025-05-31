@@ -1,8 +1,11 @@
 import { Button, Divider } from '@mantine/core';
 import { Link, Outlet, createRootRoute } from '@tanstack/react-router';
+import dayjs from 'dayjs';
 import type React from 'react';
-import { useCallback } from 'react';
+import { useCallback, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import 'dayjs/locale/en';
+import 'dayjs/locale/ja';
 
 const RouteComponent = (): React.ReactElement => {
   const { i18n } = useTranslation();
@@ -13,6 +16,10 @@ const RouteComponent = (): React.ReactElement => {
     } else {
       await i18n.changeLanguage('en');
     }
+  }, [i18n]);
+
+  useEffect(() => {
+    dayjs.locale(i18n.language);
   }, [i18n]);
 
   return (

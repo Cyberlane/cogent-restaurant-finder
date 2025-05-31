@@ -1,24 +1,54 @@
-import { Paper, Text } from '@mantine/core';
+import { Text, Timeline } from '@mantine/core';
+import { IconMessageDots } from '@tabler/icons-react';
+import dayjs from 'dayjs';
+import relativeTime from 'dayjs/plugin/relativeTime';
+import { useEffect, useState } from 'react';
 
+import { useTranslation } from 'react-i18next';
 import type { Tip } from '../types/foursquare.type';
+
+dayjs.extend(relativeTime);
 
 export type TipListProps = {
   restaurantId: string;
   tips: Tip[];
 };
 
+type TipItemProps = {
+  tip: Tip;
+};
+
+const TipItem = ({ tip }: TipItemProps) => {
+  const { i18n } = useTranslation();
+  const [timeAgo, setTimeAgo] = useState<string>(
+    dayjs(tip.created_at).fromNow(),
+  );
+
+  useEffect(() => {
+    dayjs.locale(i18n.language);
+    setTimeAgo(dayjs(tip.created_at).fromNow());
+  }, [i18n.language, tip]);
+
+  return (
+    <Timeline.Item bullet={<IconMessageDots size={12} />}>
+      <Text c="dimmed" size="sm">
+        {tip.text}
+      </Text>
+      <Text size="xs" mt={4}>
+        {timeAgo}
+      </Text>
+    </Timeline.Item>
+  );
+};
+
 const TipList = ({ restaurantId, tips }: TipListProps) => {
-  return tips.map((tip) => (
-    <Paper
-      key={`tips-${restaurantId}-${tip.created_at}`}
-      withBorder
-      p="sm"
-      mt="sm"
-    >
-      <Text size="xs">{tip.created_at}</Text>
-      <Text size="sm">{tip.text}</Text>
-    </Paper>
-  ));
+  return (
+    <Timeline bulletSize={24} lineWidth={2}>
+      {tips.map((tip) => (
+        <TipItem key={`tips-${restaurantId}-${tip.created_at}`} tip={tip} />
+      ))}
+    </Timeline>
+  );
 };
 
 export default TipList;
