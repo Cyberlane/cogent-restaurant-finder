@@ -1,6 +1,8 @@
 {
   "home": {
-    "title": "レストラン検索へようこそ"
+    "title": "レストラン検索へようこそ",
+    "list": "リスト",
+    "map": "地図"
   },
   "map": {
     "officeName": "Cogent Labs"

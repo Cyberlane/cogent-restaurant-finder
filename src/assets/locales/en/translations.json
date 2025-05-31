@@ -1,6 +1,8 @@
 {
   "home": {
-    "title": "Welcome to the Restaurant Finder"
+    "title": "Welcome to the Restaurant Finder",
+    "list": "List",
+    "map": "Map"
   },
   "map": {
     "officeName": "Cogent Labs"

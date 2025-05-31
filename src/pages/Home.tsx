@@ -1,4 +1,5 @@
 import { Container, Group, Loader, Tabs } from '@mantine/core';
+import { useTranslation } from 'react-i18next';
 
 import Filters from '../components/Filters/Filters';
 import RandomButton from '../components/RandomButton';
@@ -9,6 +10,7 @@ import Sort from '../components/Sort';
 import { useRestaurants } from '../hooks/useRestaurants';
 
 const HomePage = () => {
+  const { t } = useTranslation();
   const { data: restaurants, isLoading } = useRestaurants();
 
   return (
@@ -26,8 +28,8 @@ const HomePage = () => {
       ) : (
         <Tabs mt="lg" defaultValue="list" keepMounted={false}>
           <Tabs.List>
-            <Tabs.Tab value="list">List</Tabs.Tab>
-            <Tabs.Tab value="map">Map</Tabs.Tab>
+            <Tabs.Tab value="list">{t('home.list')}</Tabs.Tab>
+            <Tabs.Tab value="map">{t('home.map')}</Tabs.Tab>
           </Tabs.List>
           <Tabs.Panel value="list" pt="xs">
             <Results results={restaurants} />
