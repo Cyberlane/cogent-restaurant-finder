@@ -20,6 +20,10 @@ jobs:
 
       - name: Build app
         run: npm run build
+        env:
+          VITE_FOURSQUARE_API_KEY: ${{ secrets.VITE_FOURSQUARE_API_KEY }}
+          VITE_OFFICE_LAT: ${{ secrets.VITE_OFFICE_LAT }}
+          VITE_OFFICE_LNG: ${{ secrets.VITE_OFFICE_LNG }}
 
       - name: Deploy to Firebase
         uses: FirebaseExtended/action-hosting-deploy@v0
