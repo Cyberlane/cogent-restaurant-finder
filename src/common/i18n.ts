@@ -22,7 +22,7 @@ const i18nOptions: InitOptions<HttpBackendOptions> = {
   },
   backend: {
     loadPath: isProduction
-      ? 'locales/{{lng}//translations.json'
+      ? '/locales/{{lng}}//translations.json'
       : '/src/assets/locales/{{lng}}/translations.json',
   },
 };
