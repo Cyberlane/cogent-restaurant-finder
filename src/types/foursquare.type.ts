@@ -15,7 +15,7 @@ export type Restaurant = {
   price?: Price;
   distance: number;
   link: string; // hypermedia for details
-  stats: {
+  stats?: {
     total_photos: number;
     total_ratings: number;
     total_tips: number;
@@ -34,7 +34,7 @@ export type Restaurant = {
       meals: Meals;
     };
     services: Services;
-    payment: Payment;
+    payment?: Payment;
   };
 };
 

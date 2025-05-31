@@ -42,7 +42,9 @@
   "sort": {
     "sortBy": "並び替え",
     "ratings": "評価",
-    "distance": "距離"
+    "distance": "距離",
+    "relevance": "関連性",
+    "popularity": "人気"
   },
   "filter": {
     "category": "カテゴリー",

@@ -4,17 +4,18 @@ import { FourSquareApiInstance } from '../api/foursquare';
 import { useRestaurantStore } from '../store/useRestaurantStore';
 
 export const useRestaurants = () => {
-  const { minPrice, maxPrice, sortBy, search, openingTime } =
+  const { minPrice, maxPrice, sortBy, search, openingTime, category } =
     useRestaurantStore();
   const openKey = JSON.stringify({ openingTime });
 
   const query = useQuery({
-    queryKey: ['search', minPrice, maxPrice, sortBy, search, openKey],
+    queryKey: ['search', minPrice, maxPrice, sortBy, search, openKey, category],
     queryFn: () =>
       FourSquareApiInstance.findRestaurants({
         query: search,
         minPrice,
         maxPrice,
+        category,
         sortBy,
         open: openingTime,
       }),

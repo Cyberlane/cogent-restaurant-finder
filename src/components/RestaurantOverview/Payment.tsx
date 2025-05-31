@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import type { Payment as PaymentType } from '../../types/foursquare.type';
 
 type PaymentProps = {
-  payment: PaymentType;
+  payment: PaymentType | undefined;
 };
 
 const Payment = ({ payment }: PaymentProps) => {
@@ -14,7 +14,7 @@ const Payment = ({ payment }: PaymentProps) => {
   return (
     <Group>
       {t('overview.acceptCreditCards')}{' '}
-      {payment.credit_cards.accepts_credit_cards ? (
+      {payment?.credit_cards.accepts_credit_cards ? (
         <IconCheck color="green" />
       ) : (
         <IconCancel color="red" />

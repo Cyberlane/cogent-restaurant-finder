@@ -1,6 +1,7 @@
 import { ENV } from '../common/env';
 import { Categories } from '../types/foursquare.type';
 import type {
+  Category,
   DayOfWeek,
   OpenAt,
   OpenNow,
@@ -50,6 +51,7 @@ export type FetchRestaurantsProps = {
   radius?: number; // Meters
   limit?: number;
   open?: OpeningTime;
+  category?: Category;
   sortBy?: SortBy;
 };
 
@@ -114,14 +116,20 @@ export class FourSquareApi {
     radius = 1000,
     limit = 50, // API limit is 50
     open,
+    category,
     sortBy,
   }: FetchRestaurantsProps) {
     // const params = new Record<string, string>();
     const params = new URLSearchParams({
       ll: `${ENV.VITE_OFFICE_LAT},${ENV.VITE_OFFICE_LNG}`,
-      categories: AllCategories,
       fields: AllFields,
     });
+
+    if (category != null) {
+      params.append('categories', `${Categories[category]}`);
+    } else {
+      params.append('categories', AllCategories);
+    }
 
     params.append('radius', `${radius}`);
     params.append('limit', `${limit}`);

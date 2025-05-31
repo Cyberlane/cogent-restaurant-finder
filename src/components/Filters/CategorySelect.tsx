@@ -1,22 +1,16 @@
 import { Select } from '@mantine/core';
-import { useCallback } from 'react';
+import { useCallback, useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
+import { useRestaurantStore } from '../../store/useRestaurantStore';
 import type { Category } from '../../types/foursquare.type';
 
-interface CategorySelectProps {
-  category: Category | undefined;
-  clearCategory: () => void;
-  setCategory: (val: Category) => void;
-  t: (key: string) => string;
-}
-
-const CategorySelect: React.FC<CategorySelectProps> = ({
-  category,
-  clearCategory,
-  setCategory,
-  t,
-}) => {
-  const selectedCategory = category == null ? 'All' : category;
+const CategorySelect = () => {
+  const { t } = useTranslation();
+  const { category, clearCategory, setCategory } = useRestaurantStore();
+  const [selected, setSelected] = useState<string>(
+    category == null ? 'All' : category,
+  );
 
   const setSelectedCategory = useCallback(
     (value: string | null) => {
@@ -29,6 +23,10 @@ const CategorySelect: React.FC<CategorySelectProps> = ({
     [clearCategory, setCategory],
   );
 
+  useEffect(() => {
+    setSelected(category == null ? 'All' : category);
+  }, [category]);
+
   return (
     <Select
       data={[
@@ -39,7 +37,7 @@ const CategorySelect: React.FC<CategorySelectProps> = ({
         { value: 'Food Stand', label: t('category.foodStand') },
       ]}
       label={t('filter.category')}
-      value={selectedCategory == null ? 'All' : selectedCategory}
+      value={selected}
       onChange={setSelectedCategory}
       radius="md"
     />

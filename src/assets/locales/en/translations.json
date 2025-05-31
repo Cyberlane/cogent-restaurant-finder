@@ -42,7 +42,9 @@
   "sort": {
     "sortBy": "Sort by",
     "ratings": "Ratings",
-    "distance": "Distance"
+    "distance": "Distance",
+    "relevance": "Relevance",
+    "popularity": "Popularity"
   },
   "filter": {
     "category": "Category",

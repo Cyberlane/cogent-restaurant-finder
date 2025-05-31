@@ -27,7 +27,7 @@ const RestaurantCard = (props: RestaurantCardProps) => {
         <Image src={photoUrl} h={160} radius="sm" mb="sm" />
       )}
       <Text size="sm" c="dimmed">
-        {t('card.tips')}: {restaurant.stats.total_tips}
+        {t('card.tips')}: {restaurant.stats?.total_tips ?? 0}
       </Text>
       <Group gap={4} mt="xs">
         <Rating rating={restaurant.rating} />

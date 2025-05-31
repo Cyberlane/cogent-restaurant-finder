@@ -1,22 +1,16 @@
 import { Select } from '@mantine/core';
-import { useCallback } from 'react';
+import { useCallback, useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
+import { useRestaurantStore } from '../../store/useRestaurantStore';
 import type { Price } from '../../types/foursquare.type';
 
-interface BudgetSelectProps {
-  minPrice: Price | undefined;
-  clearPrices: () => void;
-  setBudgetPrice: (val: Price) => void;
-  t: (key: string) => string;
-}
-
-const BudgetSelect: React.FC<BudgetSelectProps> = ({
-  minPrice,
-  clearPrices,
-  setBudgetPrice,
-  t,
-}) => {
-  const selectedBudget = minPrice == null ? 'All' : ''.repeat(minPrice);
+const BudgetSelect = () => {
+  const { t } = useTranslation();
+  const { minPrice, setBudgetPrice, clearPrices } = useRestaurantStore();
+  const [budget, setBudget] = useState<string>(
+    minPrice == null ? 'All' : ''.repeat(minPrice),
+  );
 
   const setSelectedBudget = useCallback(
     (value: string | null) => {
@@ -30,6 +24,10 @@ const BudgetSelect: React.FC<BudgetSelectProps> = ({
     [clearPrices, setBudgetPrice],
   );
 
+  useEffect(() => {
+    setBudget(minPrice == null ? 'All' : '¥'.repeat(minPrice));
+  }, [minPrice]);
+
   return (
     <Select
       data={[
@@ -40,7 +38,7 @@ const BudgetSelect: React.FC<BudgetSelectProps> = ({
         { value: '¥¥¥¥', label: t('budget.veryExpensive') },
       ]}
       label={t('filter.budget')}
-      value={selectedBudget}
+      value={budget}
       onChange={setSelectedBudget}
       radius="md"
     />
