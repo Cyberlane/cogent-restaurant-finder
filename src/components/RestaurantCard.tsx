@@ -5,7 +5,6 @@ import { useFormatDistance } from '../hooks/useFormatDistance';
 import type { Restaurant } from '../types/foursquare.type';
 import PhotoCarousel from './PhotoCarousel';
 import Rating from './Rating';
-import classes from './RestaurantCard.module.css';
 
 export type RestaurantCardProps = {
   restaurant: Restaurant;

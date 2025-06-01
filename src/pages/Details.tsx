@@ -1,15 +1,6 @@
-import {
-  Button,
-  Container,
-  Group,
-  Loader,
-  NavLink,
-  Tabs,
-  Text,
-} from '@mantine/core';
+import { Container, Group, Loader, NavLink, Tabs, Text } from '@mantine/core';
 import { IconMap } from '@tabler/icons-react';
 import { useParams } from '@tanstack/react-router';
-import { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import RestaurantListMap from '../components/Map';
@@ -25,11 +16,6 @@ const DetailsPage = () => {
   const params = useParams({ from: '/$id' });
   const { data: details, isLoading } = useRestaurantDetails(params.id);
   const { t } = useTranslation();
-
-  const onClick = useCallback(() => {
-    const url = `https://www.google.com/maps?q=${details?.geocodes.main.latitude},${details?.geocodes.main.longitude}`;
-    window.open(url, '_blank');
-  }, [details]);
 
   if (isLoading || details == null) {
     return (
