@@ -1,4 +1,4 @@
-import { Divider, Group } from '@mantine/core';
+import { Divider, Flex } from '@mantine/core';
 import { IconSalad } from '@tabler/icons-react';
 import { Link, Outlet, createRootRoute } from '@tanstack/react-router';
 import type React from 'react';
@@ -12,10 +12,9 @@ const RouteComponent = (): React.ReactElement => {
     <>
       <div className="p-4 bg-gray-100 rounded-lg shadow-md flex justify-between items-center">
         <Link to="/" className="text-blue-600 hover:underline">
-          <Group>
-            <IconSalad />
-            Cogent Labs - Restaurant Finder
-          </Group>
+          <Flex justify="center" align="center" gap="md">
+            <IconSalad size={36} /> Cogent Labs - Restaurant Finder
+          </Flex>
         </Link>
         <LanguagePicker />
       </div>
