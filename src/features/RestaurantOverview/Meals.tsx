@@ -1,4 +1,4 @@
-import { Table } from '@mantine/core';
+import { Paper, Table } from '@mantine/core';
 import { IconCancel, IconCheck } from '@tabler/icons-react';
 import { useTranslation } from 'react-i18next';
 
@@ -19,59 +19,32 @@ const Meals = ({ meals }: MealsProps) => {
     return null;
   }
 
+  const tables = [
+    { key: 'overview.meals.barSnacks', value: meals.bar_snacks },
+    { key: 'overview.meals.breakfast', value: meals.breakfast },
+    { key: 'overview.meals.brunch', value: meals.brunch },
+    { key: 'overview.meals.dessert', value: meals.dessert },
+    { key: 'overview.meals.dinner', value: meals.dinner },
+    { key: 'overview.meals.happyHour', value: meals.happy_hour },
+    { key: 'overview.meals.lunch', value: meals.lunch },
+    { key: 'overview.meals.tastingMenu', value: meals.tasting_menu },
+  ];
+
   return (
-    <Table>
-      <Table.Tbody>
-        <Table.Tr>
-          <Table.Td>{t('overview.meals.barSnacks')}</Table.Td>
-          <Table.Td>
-            <Icon value={meals.bar_snacks} />
-          </Table.Td>
-        </Table.Tr>
-        <Table.Tr>
-          <Table.Td>{t('overview.meals.breakfast')}</Table.Td>
-          <Table.Td>
-            <Icon value={meals.breakfast} />
-          </Table.Td>
-        </Table.Tr>
-        <Table.Tr>
-          <Table.Td>{t('overview.meals.brunch')}</Table.Td>
-          <Table.Td>
-            <Icon value={meals.brunch} />
-          </Table.Td>
-        </Table.Tr>
-        <Table.Tr>
-          <Table.Td>{t('overview.meals.dessert')}</Table.Td>
-          <Table.Td>
-            <Icon value={meals.dessert} />
-          </Table.Td>
-        </Table.Tr>
-        <Table.Tr>
-          <Table.Td>{t('overview.meals.dinner')}</Table.Td>
-          <Table.Td>
-            <Icon value={meals.dinner} />
-          </Table.Td>
-        </Table.Tr>
-        <Table.Tr>
-          <Table.Td>{t('overview.meals.happyHour')}</Table.Td>
-          <Table.Td>
-            <Icon value={meals.happy_hour} />
-          </Table.Td>
-        </Table.Tr>
-        <Table.Tr>
-          <Table.Td>{t('overview.meals.lunch')}</Table.Td>
-          <Table.Td>
-            <Icon value={meals.lunch} />
-          </Table.Td>
-        </Table.Tr>
-        <Table.Tr>
-          <Table.Td>{t('overview.meals.tastingMenu')}</Table.Td>
-          <Table.Td>
-            <Icon value={meals.tasting_menu} />
-          </Table.Td>
-        </Table.Tr>
-      </Table.Tbody>
-    </Table>
+    <Paper shadow="md" p="md" mb="md">
+      <Table>
+        <Table.Tbody>
+          {tables.map((row) => (
+            <Table.Tr key={row.key}>
+              <Table.Td>{t(row.key)}</Table.Td>
+              <Table.Td>
+                <Icon value={row.value} />
+              </Table.Td>
+            </Table.Tr>
+          ))}
+        </Table.Tbody>
+      </Table>
+    </Paper>
   );
 };
 

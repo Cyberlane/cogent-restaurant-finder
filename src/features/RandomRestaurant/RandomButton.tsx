@@ -9,6 +9,8 @@ import { getRandomNumber } from '../../utils/random';
 
 const RandomButton = () => {
   const { t } = useTranslation();
+  // We use the existing filters as our base
+  // However we could potentially make another search without filters, but this was a design choice
   const { data: restaurants } = useRestaurants();
   const navigate = useNavigate();
 
@@ -17,8 +19,7 @@ const RandomButton = () => {
       return;
     }
     const random = getRandomNumber(0, restaurants.results.length - 1);
-    const selected: Restaurant =
-      restaurants.results[random] ?? restaurants.results[0]!;
+    const selected: Restaurant = restaurants.results[random]!;
     navigate({
       to: '/$id',
       params: {

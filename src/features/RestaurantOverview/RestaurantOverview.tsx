@@ -18,30 +18,12 @@ const Overview = ({ restaurant }: OverviewProps) => {
   const regularHours = restaurant.hours?.regular ?? [];
   return (
     <Paper>
-      {tastes.length > 0 ? (
-        <Paper shadow="md" p="md" mb="md">
-          <Tastes tastes={tastes} />
-        </Paper>
-      ) : null}
-      <Paper shadow="md" p="md" mb="md">
-        <Website website={restaurant.website} />
-      </Paper>
-      <Paper shadow="md" p="md" mb="md">
-        <Payment payment={restaurant.features?.payment} />
-      </Paper>
-      <Paper shadow="md" p="md" mb="md">
-        <OpenNow isOpen={restaurant.hours.open_now} />
-      </Paper>
-      {meals != null ? (
-        <Paper shadow="md" p="md" mb="md">
-          <Meals meals={meals} />
-        </Paper>
-      ) : null}
-      {regularHours.length > 0 ? (
-        <Paper shadow="md" p="md" mb="md">
-          <OpeningHours openingHours={regularHours} />
-        </Paper>
-      ) : null}
+      <Tastes tastes={tastes} />
+      <Website website={restaurant.website} />
+      <Payment payment={restaurant.features?.payment} />
+      <OpenNow isOpen={restaurant.hours.open_now} />
+      <Meals meals={meals} />
+      <OpeningHours openingHours={regularHours} />
     </Paper>
   );
 };

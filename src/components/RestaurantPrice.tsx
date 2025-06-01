@@ -1,4 +1,5 @@
 import { Text } from '@mantine/core';
+
 import * as constants from '../constants';
 
 export type RestaurantPriceProps = {

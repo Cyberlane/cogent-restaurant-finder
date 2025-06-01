@@ -1,4 +1,4 @@
-import { Badge } from '@mantine/core';
+import { Badge, Paper } from '@mantine/core';
 
 export type TastesProps = {
   tastes: string[];
@@ -9,13 +9,13 @@ const Tastes = ({ tastes }: TastesProps) => {
     return null;
   }
   return (
-    <div>
+    <Paper shadow="md" p="md" mb="md">
       {tastes.map((taste) => (
         <Badge size="md" m={2} color="grape" key={`taste-${taste}`}>
           {taste}
         </Badge>
       ))}
-    </div>
+    </Paper>
   );
 };
 

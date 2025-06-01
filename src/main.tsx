@@ -47,7 +47,7 @@ const ReactQueryDevtools = isProduction
     );
 
 const rootElement = document.querySelector('#root') as Element;
-if (!rootElement.innerHTML) {
+if (!rootElement?.innerHTML) {
   const root = ReactDOM.createRoot(rootElement);
   root.render(
     <React.StrictMode>

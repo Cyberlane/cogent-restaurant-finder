@@ -7,18 +7,26 @@ import en from '../../assets/images/en.svg';
 import ja from '../../assets/images/ja.svg';
 import classes from './LanguagePicker.module.css';
 
-const images = {
-  en,
-  ja,
-};
+const languages = [
+  { lang: 'en', image: en, key: 'language.en' },
+  { lang: 'ja', image: ja, key: 'language.ja' },
+];
 
 const LanguagePicker = () => {
   const [opened, setOpened] = useState(false);
+  const [current, setCurrent] = useState(languages[0]!);
   const { i18n, t } = useTranslation();
 
   useEffect(() => {
     dayjs.locale(i18n.language);
   }, [i18n]);
+
+  useEffect(() => {
+    const lang = languages.find((l) => l.lang === i18n.language);
+    if (lang != null) {
+      setCurrent(lang);
+    }
+  }, [i18n.language]);
 
   return (
     <Menu
@@ -34,27 +42,22 @@ const LanguagePicker = () => {
           data-expanded={opened ?? undefined}
         >
           <Group gap="xs">
-            <Image src={images[i18n.language as 'en' | 'ja']} w={22} h={22} />
-            <span className={classes.label}>
-              {t(`language.${i18n.language}`)}
-            </span>
+            <Image src={current.image} w={22} h={22} />
+            <span className={classes.label}>{t(current.key)}</span>
           </Group>
           <IconChevronDown className={classes.icon} size={16} stroke={1.5} />
         </UnstyledButton>
       </Menu.Target>
       <Menu.Dropdown>
-        <Menu.Item
-          leftSection={<Image src={en} w={18} h={18} />}
-          onClick={() => i18n.changeLanguage('en')}
-        >
-          {t('language.en')}
-        </Menu.Item>
-        <Menu.Item
-          leftSection={<Image src={ja} w={18} h={18} />}
-          onClick={() => i18n.changeLanguage('ja')}
-        >
-          {t('language.ja')}
-        </Menu.Item>
+        {languages.map((lang) => (
+          <Menu.Item
+            key={lang.key}
+            leftSection={<Image src={lang.image} w={18} h={18} />}
+            onClick={() => i18n.changeLanguage(lang.lang)}
+          >
+            {t(lang.key)}
+          </Menu.Item>
+        ))}
       </Menu.Dropdown>
     </Menu>
   );

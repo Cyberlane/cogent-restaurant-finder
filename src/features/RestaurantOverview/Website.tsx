@@ -1,4 +1,4 @@
-import { NavLink } from '@mantine/core';
+import { NavLink, Paper } from '@mantine/core';
 import { IconWorld } from '@tabler/icons-react';
 import { useTranslation } from 'react-i18next';
 
@@ -13,14 +13,16 @@ const Website = ({ website }: WebsiteProps) => {
   }
 
   return (
-    <NavLink
-      href={website}
-      target="_blank"
-      leftSection={<IconWorld style={{ marginRight: '8px' }} />}
-      label={t('overview.website')}
-      variant="filled"
-      active
-    />
+    <Paper shadow="md" p="md" mb="md">
+      <NavLink
+        href={website}
+        target="_blank"
+        leftSection={<IconWorld style={{ marginRight: '8px' }} />}
+        label={t('overview.website')}
+        variant="filled"
+        active
+      />
+    </Paper>
   );
 };
 

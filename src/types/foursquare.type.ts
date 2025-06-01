@@ -1,3 +1,5 @@
+import type { Categories } from '../constants';
+
 export type SearchResults = {
   results: Restaurant[];
 };
@@ -38,17 +40,7 @@ export type Restaurant = {
   };
 };
 
-export type Category =
-  | 'Restaurant'
-  | 'Food Court'
-  | 'Food Truck'
-  | 'Food Stand';
-export const Categories: Record<Category, number> = {
-  Restaurant: 13065,
-  'Food Court': 13052,
-  'Food Truck': 13054,
-  'Food Stand': 13053,
-};
+export type Category = keyof typeof Categories;
 
 export type Services = {
   delivery: boolean;

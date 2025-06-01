@@ -3,6 +3,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import * as constants from '../../constants';
+import { Categories } from '../../constants';
 import { useRestaurantStore } from '../../store/useRestaurantStore';
 import type { Category } from '../../types/foursquare.type';
 
@@ -32,22 +33,10 @@ const FilterCategory = () => {
     <Select
       data={[
         { value: constants.ALL, label: t('category.all') },
-        {
-          value: constants.CATEGORY_RESTAURANT,
-          label: t('category.restaurant'),
-        },
-        {
-          value: constants.CATEGORY_FOOD_COURT,
-          label: t('category.foodCourt'),
-        },
-        {
-          value: constants.CATEGORY_FOOD_TRUCK,
-          label: t('category.foodTruck'),
-        },
-        {
-          value: constants.CATEGORY_FOOD_STAND,
-          label: t('category.foodStand'),
-        },
+        ...Object.entries(Categories).map(([name, value]) => ({
+          value: name,
+          label: t(value.key),
+        })),
       ]}
       label={t('filter.category')}
       value={selected}

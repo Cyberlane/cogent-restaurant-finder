@@ -1,5 +1,5 @@
 import { ENV } from '../common/env';
-import { Categories } from '../types/foursquare.type';
+import { Categories } from '../constants';
 import type {
   Category,
   DayOfWeek,
@@ -11,7 +11,9 @@ import type {
   SortBy,
 } from '../types/foursquare.type';
 
-const AllCategories = Object.values(Categories).join(',');
+const AllCategories = Object.values(Categories)
+  .map((c) => c.id)
+  .join(',');
 const AllFields = [
   'fsq_id',
   'name',
