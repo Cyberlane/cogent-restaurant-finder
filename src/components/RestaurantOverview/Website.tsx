@@ -1,4 +1,5 @@
-import { Text } from '@mantine/core';
+import { NavLink } from '@mantine/core';
+import { IconWorld } from '@tabler/icons-react';
 import { useTranslation } from 'react-i18next';
 
 const Website = ({ website }: { website: string | undefined }) => {
@@ -8,12 +9,14 @@ const Website = ({ website }: { website: string | undefined }) => {
   }
 
   return (
-    <Text>
-      {t('overview.website')}:{' '}
-      <a href={website} target="_blank" rel="noreferrer">
-        {website}
-      </a>
-    </Text>
+    <NavLink
+      href={website}
+      target="_blank"
+      leftSection={<IconWorld style={{ marginRight: '8px' }} />}
+      label={t('overview.website')}
+      variant="filled"
+      active
+    />
   );
 };
 

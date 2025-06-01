@@ -2,7 +2,6 @@ import { Paper } from '@mantine/core';
 
 import type { Restaurant } from '../../types/foursquare.type';
 import Meals from './Meals';
-import Menu from './Menu';
 import OpenNow from './OpenNow';
 import OpeningHours from './OpeningHours';
 import Payment from './Payment';
@@ -26,7 +25,8 @@ const Overview = ({ restaurant }: OverviewProps) => {
       ) : null}
       <Paper shadow="md" p="md" mb="md">
         <Website website={restaurant.website} />
-        <Menu menu={restaurant.menu} />
+      </Paper>
+      <Paper shadow="md" p="md" mb="md">
         <Payment payment={restaurant.features?.payment} />
       </Paper>
       <Paper shadow="md" p="md" mb="md">

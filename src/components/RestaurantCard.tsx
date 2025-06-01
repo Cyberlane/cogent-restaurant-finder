@@ -1,11 +1,11 @@
-import { Button, Card, Group, Text } from '@mantine/core';
-import { useNavigate } from '@tanstack/react-router';
+import { Card, Group, NavLink, Text } from '@mantine/core';
 import { useTranslation } from 'react-i18next';
 
 import { useFormatDistance } from '../hooks/useFormatDistance';
 import type { Restaurant } from '../types/foursquare.type';
 import PhotoCarousel from './PhotoCarousel';
 import Rating from './Rating';
+import classes from './RestaurantCard.module.css';
 
 export type RestaurantCardProps = {
   restaurant: Restaurant;
@@ -14,16 +14,17 @@ export type RestaurantCardProps = {
 const RestaurantCard = (props: RestaurantCardProps) => {
   const { restaurant } = props;
   const { t } = useTranslation();
-  const navigate = useNavigate();
   const formatDistance = useFormatDistance();
 
   const photos = restaurant.photos ?? [];
 
   return (
     <Card withBorder radius="md" shadow="sm" p="md">
-      <Text fw={600} size="lg" mb="xs">
-        {restaurant.name}
-      </Text>
+      <a href={`/${restaurant.fsq_id}`}>
+        <Text fw={600} size="lg" mb="xs" style={{ cursor: 'pointer' }}>
+          {restaurant.name}
+        </Text>
+      </a>
       <Text size="sm" mb="sm">
         {formatDistance(restaurant.distance)}
       </Text>
@@ -37,19 +38,14 @@ const RestaurantCard = (props: RestaurantCardProps) => {
           ({restaurant.rating ?? t('rating.unrated')})
         </Text>
       </Group>
-      <Button
+      <NavLink
+        href={`/${restaurant.fsq_id}`}
+        label={t('card.viewDetails')}
+        variant="filled"
+        active
         mt="md"
-        fullWidth
-        variant="light"
-        onClick={() =>
-          navigate({
-            to: '/$id',
-            params: { id: restaurant.fsq_id },
-          })
-        }
-      >
-        {t('card.viewDetails')}
-      </Button>
+        style={{ textAlign: 'center' }}
+      />
     </Card>
   );
 };

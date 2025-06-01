@@ -1,4 +1,12 @@
-import { Button, Container, Group, Loader, Tabs, Text } from '@mantine/core';
+import {
+  Button,
+  Container,
+  Group,
+  Loader,
+  NavLink,
+  Tabs,
+  Text,
+} from '@mantine/core';
 import { IconMap } from '@tabler/icons-react';
 import { useParams } from '@tanstack/react-router';
 import { useCallback } from 'react';
@@ -63,9 +71,14 @@ const DetailsPage = () => {
           <TipList restaurantId={params.id} tips={details.tips ?? []} />
         </Tabs.Panel>
         <Tabs.Panel value="map" pt="xs" style={{ height: '500px' }}>
-          <Button mb="md" onClick={onClick}>
-            <IconMap style={{ marginRight: '10px' }} /> {t('map.openInGoogle')}
-          </Button>
+          <NavLink
+            mb="md"
+            href={`https://www.google.com/maps?q=${details?.geocodes.main.latitude},${details?.geocodes.main.longitude}`}
+            target="_blank"
+            label={t('map.openInGoogle')}
+            leftSection={<IconMap style={{ marginRight: '10px' }} />}
+            active
+          />
           <RestaurantListMap restaurants={[details]} />
         </Tabs.Panel>
       </Tabs>

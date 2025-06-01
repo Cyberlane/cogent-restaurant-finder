@@ -1,4 +1,4 @@
-import { Divider, Flex } from '@mantine/core';
+import { Flex } from '@mantine/core';
 import { IconSalad } from '@tabler/icons-react';
 import { Link, Outlet, createRootRoute } from '@tanstack/react-router';
 import type React from 'react';
@@ -18,7 +18,6 @@ const RouteComponent = (): React.ReactElement => {
         </Link>
         <LanguagePicker />
       </div>
-      <Divider className="my-4" />
       <Outlet />
     </>
   );
