@@ -84,8 +84,8 @@ export type Price = 1 | 2 | 3 | 4;
 export type DayOfWeek =
   | 'Monday'
   | 'Tuesday'
-  | 'Wedsnesday'
-  | 'Thurday'
+  | 'Wednesday'
+  | 'Thursday'
   | 'Friday'
   | 'Saturday'
   | 'Sunday';
