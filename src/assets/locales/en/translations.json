@@ -4,6 +4,10 @@
     "list": "List",
     "map": "Map"
   },
+  "language": {
+    "en": "English",
+    "ja": "Japanese"
+  },
   "map": {
     "officeName": "Cogent Labs"
   },
