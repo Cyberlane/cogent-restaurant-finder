@@ -2,6 +2,8 @@ name: Deploy to Firebase on Release
 
 on:
   workflow_dispatch:
+  release:
+    types: [published]
 
 jobs:
   deploy:
