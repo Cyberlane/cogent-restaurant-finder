@@ -1,4 +1,5 @@
 import { Text } from '@mantine/core';
+import * as constants from '../constants';
 
 export type RestaurantPriceProps = {
   price: number | undefined;
@@ -8,9 +9,9 @@ const RestaurantPrice = ({ price }: RestaurantPriceProps) => {
   const priceRange = price ?? 0;
   return (
     <Text mt="sm" size="sm">
-      {'¥'.repeat(priceRange)}
+      {constants.JPY.repeat(priceRange)}
       <span style={{ color: 'var(--mantine-color-dimmed)' }}>
-        {'¥'.repeat(4 - priceRange)}
+        {constants.JPY.repeat(4 - priceRange)}
       </span>
     </Text>
   );

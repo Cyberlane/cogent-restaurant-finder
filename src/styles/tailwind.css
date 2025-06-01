@@ -7,4 +7,6 @@
 @import "@mantine/dates/styles.css";
 @import "@mantine/carousel/styles.css";
 
+@import "leaflet/dist/leaflet.css";
+
 @import "tailwind-preset-mantine/theme.css";

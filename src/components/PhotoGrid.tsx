@@ -3,10 +3,10 @@ import PhotoCarousel from './PhotoCarousel';
 
 export type PhotoGridProps = {
   photos: Photo[];
+  height?: number;
 };
 
-const PhotoGrid = ({ photos }: PhotoGridProps) => {
-  const height = 400;
+const PhotoGrid = ({ photos, height = 400 }: PhotoGridProps) => {
   return <PhotoCarousel photos={photos} height={height} />;
 };
 

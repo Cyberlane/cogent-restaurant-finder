@@ -5,7 +5,7 @@ import type React from 'react';
 import 'dayjs/locale/en';
 import 'dayjs/locale/ja';
 
-import LanguagePicker from '../components/LanguagePicker';
+import LanguagePicker from '../features/LanguagePicker/LanguagePicker';
 
 const RouteComponent = (): React.ReactElement => {
   return (

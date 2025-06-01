@@ -11,17 +11,10 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
-import { Route as MapImport } from './routes/map'
 import { Route as IdImport } from './routes/$id'
 import { Route as IndexImport } from './routes/index'
 
 // Create/Update Routes
-
-const MapRoute = MapImport.update({
-  id: '/map',
-  path: '/map',
-  getParentRoute: () => rootRoute,
-} as any)
 
 const IdRoute = IdImport.update({
   id: '/$id',
@@ -53,13 +46,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IdImport
       parentRoute: typeof rootRoute
     }
-    '/map': {
-      id: '/map'
-      path: '/map'
-      fullPath: '/map'
-      preLoaderRoute: typeof MapImport
-      parentRoute: typeof rootRoute
-    }
   }
 }
 
@@ -68,41 +54,36 @@ declare module '@tanstack/react-router' {
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/$id': typeof IdRoute
-  '/map': typeof MapRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/$id': typeof IdRoute
-  '/map': typeof MapRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
   '/$id': typeof IdRoute
-  '/map': typeof MapRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/$id' | '/map'
+  fullPaths: '/' | '/$id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/$id' | '/map'
-  id: '__root__' | '/' | '/$id' | '/map'
+  to: '/' | '/$id'
+  id: '__root__' | '/' | '/$id'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   IdRoute: typeof IdRoute
-  MapRoute: typeof MapRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   IdRoute: IdRoute,
-  MapRoute: MapRoute,
 }
 
 export const routeTree = rootRoute
@@ -116,8 +97,7 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/",
-        "/$id",
-        "/map"
+        "/$id"
       ]
     },
     "/": {
@@ -125,9 +105,6 @@ export const routeTree = rootRoute
     },
     "/$id": {
       "filePath": "$id.tsx"
-    },
-    "/map": {
-      "filePath": "map.tsx"
     }
   }
 }

@@ -1,10 +1,10 @@
 import { Card, Group, NavLink, Text } from '@mantine/core';
 import { useTranslation } from 'react-i18next';
 
-import { useFormatDistance } from '../hooks/useFormatDistance';
-import type { Restaurant } from '../types/foursquare.type';
-import PhotoCarousel from './PhotoCarousel';
-import Rating from './Rating';
+import PhotoCarousel from '../../components/PhotoCarousel';
+import Rating from '../../components/Rating';
+import { useFormatDistance } from '../../hooks/useFormatDistance';
+import type { Restaurant } from '../../types/foursquare.type';
 
 export type RestaurantCardProps = {
   restaurant: Restaurant;

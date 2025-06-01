@@ -3,13 +3,14 @@ import { IconMap } from '@tabler/icons-react';
 import { useParams } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 
-import RestaurantListMap from '../components/Map';
+import MarkedMap from '../components/MarkedMap';
+import { restaurantToMarker } from '../components/MarkedMap.utils';
 import PhotoGrid from '../components/PhotoGrid';
 import Rating from '../components/Rating';
 import RestaurantAddress from '../components/RestaurantAddress';
-import Overview from '../components/RestaurantOverview/RestaurantOverview';
 import RestaurantPrice from '../components/RestaurantPrice';
-import TipList from '../components/TipsList';
+import TipList from '../features/Comments/CommentsList';
+import Overview from '../features/RestaurantOverview/RestaurantOverview';
 import { useRestaurantDetails } from '../hooks/useRestaurantDetails';
 
 const DetailsPage = () => {
@@ -65,7 +66,7 @@ const DetailsPage = () => {
             leftSection={<IconMap style={{ marginRight: '10px' }} />}
             active
           />
-          <RestaurantListMap restaurants={[details]} />
+          <MarkedMap markers={[restaurantToMarker(details)]} />
         </Tabs.Panel>
       </Tabs>
     </Container>

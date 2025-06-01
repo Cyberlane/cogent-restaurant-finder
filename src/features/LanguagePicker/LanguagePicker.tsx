@@ -3,8 +3,8 @@ import { IconChevronDown } from '@tabler/icons-react';
 import dayjs from 'dayjs';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import en from '../assets/images/en.svg';
-import ja from '../assets/images/ja.svg';
+import en from '../../assets/images/en.svg';
+import ja from '../../assets/images/ja.svg';
 import classes from './LanguagePicker.module.css';
 
 const images = {

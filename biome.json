@@ -18,7 +18,21 @@
       "quoteStyle": "single"
     }
   },
+  "linter": {
+    "rules": {
+      "style": {
+        "noNonNullAssertion": "off"
+      }
+    }
+  },
   "files": {
-    "ignore": ["src/routeTree.gen.ts"]
+    "ignore": [
+      "src/routeTree.gen.ts",
+      "**/*.module.css.d.ts",
+      "tailwind.config.js",
+      "tsconfig.json",
+      "tsconfig.*.json",
+      ".devcontainer/"
+    ]
   }
 }

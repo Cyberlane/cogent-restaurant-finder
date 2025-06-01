@@ -2,19 +2,20 @@ import { Select } from '@mantine/core';
 import { useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import * as constants from '../../constants';
 import { useRestaurantStore } from '../../store/useRestaurantStore';
 import type { Category } from '../../types/foursquare.type';
 
-const CategorySelect = () => {
+const FilterCategory = () => {
   const { t } = useTranslation();
   const { category, clearCategory, setCategory } = useRestaurantStore();
   const [selected, setSelected] = useState<string>(
-    category == null ? 'All' : category,
+    category == null ? constants.ALL : category,
   );
 
   const setSelectedCategory = useCallback(
     (value: string | null) => {
-      if (value == null || value === 'All') {
+      if (value == null || value === constants.ALL) {
         clearCategory();
       } else {
         setCategory(value as Category);
@@ -24,17 +25,29 @@ const CategorySelect = () => {
   );
 
   useEffect(() => {
-    setSelected(category == null ? 'All' : category);
+    setSelected(category == null ? constants.ALL : category);
   }, [category]);
 
   return (
     <Select
       data={[
-        { value: 'All', label: t('category.all') },
-        { value: 'Restaurant', label: t('category.restaurant') },
-        { value: 'Food Court', label: t('category.foodCourt') },
-        { value: 'Food Truck', label: t('category.foodTruck') },
-        { value: 'Food Stand', label: t('category.foodStand') },
+        { value: constants.ALL, label: t('category.all') },
+        {
+          value: constants.CATEGORY_RESTAURANT,
+          label: t('category.restaurant'),
+        },
+        {
+          value: constants.CATEGORY_FOOD_COURT,
+          label: t('category.foodCourt'),
+        },
+        {
+          value: constants.CATEGORY_FOOD_TRUCK,
+          label: t('category.foodTruck'),
+        },
+        {
+          value: constants.CATEGORY_FOOD_STAND,
+          label: t('category.foodStand'),
+        },
       ]}
       label={t('filter.category')}
       value={selected}
@@ -44,4 +57,4 @@ const CategorySelect = () => {
   );
 };
 
-export default CategorySelect;
+export default FilterCategory;

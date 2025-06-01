@@ -9,7 +9,7 @@ import { formatFilterDate } from '../../utils/time';
 
 const defaultDate = dayjs().format('YYYY-MM-DDHH:mm');
 
-const TimeSelect = () => {
+const FilterTimeOfWeek = () => {
   const { t } = useTranslation();
   const { setOpenSpecificTime, clearOpening } = useRestaurantStore();
 
@@ -40,4 +40,4 @@ const TimeSelect = () => {
   );
 };
 
-export default TimeSelect;
+export default FilterTimeOfWeek;
