@@ -9,7 +9,8 @@
     "ja": "Japanese"
   },
   "map": {
-    "officeName": "Cogent Labs"
+    "officeName": "Cogent Labs",
+    "openInGoogle": "Open in Google Maps"
   },
   "distance": {
     "meter": "meter",
