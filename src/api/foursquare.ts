@@ -60,8 +60,8 @@ export class FourSquareApi {
   private _dayMap: Record<DayOfWeek, number> = {
     Monday: 1,
     Tuesday: 2,
-    Wedsnesday: 3,
-    Thurday: 4,
+    Wednesday: 3,
+    Thursday: 4,
     Friday: 5,
     Saturday: 6,
     Sunday: 7,
