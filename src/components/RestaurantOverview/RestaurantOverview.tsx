@@ -15,7 +15,7 @@ export type OverviewProps = {
 
 const Overview = ({ restaurant }: OverviewProps) => {
   const tastes = restaurant.tastes ?? [];
-  const meals = restaurant.features.food_and_drink?.meals;
+  const meals = restaurant.features?.food_and_drink?.meals;
   const regularHours = restaurant.hours?.regular ?? [];
   return (
     <Paper>
@@ -27,7 +27,7 @@ const Overview = ({ restaurant }: OverviewProps) => {
       <Paper shadow="md" p="md" mb="md">
         <Website website={restaurant.website} />
         <Menu menu={restaurant.menu} />
-        <Payment payment={restaurant.features.payment} />
+        <Payment payment={restaurant.features?.payment} />
       </Paper>
       <Paper shadow="md" p="md" mb="md">
         <OpenNow isOpen={restaurant.hours.open_now} />

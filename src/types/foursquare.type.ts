@@ -29,7 +29,7 @@ export type Restaurant = {
   hours_popular: RegularHours[];
   tastes?: string[];
   website?: string;
-  features: {
+  features?: {
     food_and_drink?: {
       meals: Meals;
     };
