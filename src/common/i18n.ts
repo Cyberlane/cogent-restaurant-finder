@@ -17,6 +17,7 @@ const i18nOptions: InitOptions<HttpBackendOptions> = {
   ns: [defaultNS],
   debug: !isProduction,
   fallbackLng: 'en',
+  supportedLngs: ['en', 'ja'],
   interpolation: {
     escapeValue: false,
   },
