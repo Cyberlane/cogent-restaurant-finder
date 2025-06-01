@@ -70,7 +70,7 @@ const RestaurantListMap = ({ restaurants }: RestaurantMapProps) => {
     <div style={{ height: '500px' }}>
       <MapContainer
         zoom={1}
-        style={{ width: '100%', height: '100%' }}
+        style={{ width: '100%', height: '100%', zIndex: 0 }}
         scrollWheelZoom={false}
       >
         <TileLayer
