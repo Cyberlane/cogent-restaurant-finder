@@ -1,11 +1,10 @@
-import { Carousel } from '@mantine/carousel';
-import { Button, Card, Group, Image, Text } from '@mantine/core';
+import { Button, Card, Group, Text } from '@mantine/core';
 import { useNavigate } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 
 import { useFormatDistance } from '../hooks/useFormatDistance';
 import type { Restaurant } from '../types/foursquare.type';
-import { assemblePhotoUrl } from '../utils/url';
+import PhotoCarousel from './PhotoCarousel';
 import Rating from './Rating';
 
 export type RestaurantCardProps = {
@@ -19,7 +18,6 @@ const RestaurantCard = (props: RestaurantCardProps) => {
   const formatDistance = useFormatDistance();
 
   const photos = restaurant.photos ?? [];
-  const photoUrls = photos.map((p) => assemblePhotoUrl(p, 320));
 
   return (
     <Card withBorder radius="md" shadow="sm" p="md">
@@ -29,13 +27,7 @@ const RestaurantCard = (props: RestaurantCardProps) => {
       <Text size="sm" mb="sm">
         {formatDistance(restaurant.distance)}
       </Text>
-      <Carousel withIndicators height={160}>
-        {photoUrls.map((url) => (
-          <Carousel.Slide key={url}>
-            <Image src={url} />
-          </Carousel.Slide>
-        ))}
-      </Carousel>
+      <PhotoCarousel photos={photos} height={160} />
       <Text size="sm" c="dimmed">
         {t('card.tips')}: {restaurant.stats?.total_tips ?? 0}
       </Text>
