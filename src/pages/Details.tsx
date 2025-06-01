@@ -2,10 +2,10 @@ import { Container, Group, Loader, Tabs, Text } from '@mantine/core';
 import { useParams } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 
+import RestaurantListMap from '../components/Map';
 import PhotoGrid from '../components/PhotoGrid';
 import Rating from '../components/Rating';
 import RestaurantAddress from '../components/RestaurantAddress';
-import RestaurantMap from '../components/RestaurantMap';
 import Overview from '../components/RestaurantOverview/RestaurantOverview';
 import RestaurantPrice from '../components/RestaurantPrice';
 import TipList from '../components/TipsList';
@@ -56,7 +56,7 @@ const DetailsPage = () => {
           <TipList restaurantId={params.id} tips={details.tips ?? []} />
         </Tabs.Panel>
         <Tabs.Panel value="map" pt="xs" style={{ height: '500px' }}>
-          <RestaurantMap restaurant={details} />
+          <RestaurantListMap restaurants={[details]} />
         </Tabs.Panel>
       </Tabs>
     </Container>

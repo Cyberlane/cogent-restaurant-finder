@@ -2,8 +2,8 @@ import { Container, Group, Loader, Tabs } from '@mantine/core';
 import { useTranslation } from 'react-i18next';
 
 import Filters from '../components/Filters/Filters';
+import RestaurantListMap from '../components/Map';
 import RandomButton from '../components/RandomButton';
-import RestaurantListMap from '../components/ResultMap';
 import SearchBar from '../components/SearchBar';
 import Results from '../components/SearchResults';
 import Sort from '../components/Sort';
