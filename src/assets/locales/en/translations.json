@@ -10,7 +10,8 @@
   },
   "map": {
     "officeName": "Cogent Labs",
-    "openInGoogle": "Open in Google Maps"
+    "openInGoogle": "Open in Google Maps",
+    "pick": "Pick a date and time"
   },
   "distance": {
     "meter": "meter",

@@ -10,7 +10,8 @@
   },
   "map": {
     "officeName": "Cogent Labs",
-    "openInGoogle": "Googleマップで開く"
+    "openInGoogle": "Googleマップで開く",
+    "pick": "日付と時間を選択"
   },
   "distance": {
     "meter": "メートル",
