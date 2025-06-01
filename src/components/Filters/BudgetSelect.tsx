@@ -32,10 +32,10 @@ const BudgetSelect = () => {
     <Select
       data={[
         { value: 'All', label: t('budget.all') },
-        { value: '¥', label: t('budget.cheap') },
-        { value: '¥¥', label: t('budget.moderate') },
-        { value: '¥¥¥', label: t('budget.expensive') },
-        { value: '¥¥¥¥', label: t('budget.veryExpensive') },
+        { value: '¥', label: '¥' },
+        { value: '¥¥', label: '¥¥' },
+        { value: '¥¥¥', label: '¥¥¥' },
+        { value: '¥¥¥¥', label: '¥¥¥¥' },
       ]}
       label={t('filter.budget')}
       value={budget}
