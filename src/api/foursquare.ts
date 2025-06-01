@@ -139,11 +139,11 @@ export class FourSquareApi {
     }
 
     if (minPrice != null) {
-      params.append('minPrice', `${minPrice}`);
+      params.append('min_price', `${minPrice}`);
     }
 
     if (maxPrice != null) {
-      params.append('maxPrice', `${maxPrice}`);
+      params.append('max_price', `${maxPrice}`);
     }
 
     if (open != null) {
