@@ -3,6 +3,7 @@ import { Button, Card, Group, Image, Text } from '@mantine/core';
 import { useNavigate } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 
+import { useFormatDistance } from '../hooks/useFormatDistance';
 import type { Restaurant } from '../types/foursquare.type';
 import { assemblePhotoUrl } from '../utils/url';
 import Rating from './Rating';
@@ -15,14 +16,18 @@ const RestaurantCard = (props: RestaurantCardProps) => {
   const { restaurant } = props;
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const formatDistance = useFormatDistance();
 
   const photos = restaurant.photos ?? [];
   const photoUrls = photos.map((p) => assemblePhotoUrl(p, 320));
 
   return (
     <Card withBorder radius="md" shadow="sm" p="md">
-      <Text fw={600} size="lg" mb="sm">
+      <Text fw={600} size="lg" mb="xs">
         {restaurant.name}
+      </Text>
+      <Text size="sm" mb="sm">
+        {formatDistance(restaurant.distance)}
       </Text>
       <Carousel withIndicators height={160}>
         {photoUrls.map((url) => (

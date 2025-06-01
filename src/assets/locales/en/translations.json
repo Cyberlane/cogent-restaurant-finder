@@ -11,6 +11,13 @@
   "map": {
     "officeName": "Cogent Labs"
   },
+  "distance": {
+    "meter": "meter",
+    "meters": "meters",
+    "kilometer": "kilometer",
+    "kilometers": "kilometers",
+    "away": " away"
+  },
   "rating": {
     "unrated": "Unrated"
   },

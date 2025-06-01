@@ -11,6 +11,13 @@
   "map": {
     "officeName": "Cogent Labs"
   },
+  "distance": {
+    "meter": "メートル",
+    "meters": "メートル",
+    "kilometer": "キロメートル",
+    "kilometers": "キロメートル",
+    "away": "離れた"
+  },
   "rating": {
     "unrated": "未評価"
   },
