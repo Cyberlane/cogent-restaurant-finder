@@ -26,7 +26,7 @@ const SearchBar = () => {
         size="md"
         key={form.key('search')}
         rightSection={
-          <ActionIcon onClick={() => setSearch(form.getValues().search)}>
+          <ActionIcon type="submit">
             <IconArrowRight />
           </ActionIcon>
         }
