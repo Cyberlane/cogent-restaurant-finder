@@ -1,6 +1,8 @@
+import { ActionIcon } from '@mantine/core';
 import { DateTimePicker } from '@mantine/dates';
+import { IconRestore } from '@tabler/icons-react';
 import dayjs from 'dayjs';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -11,12 +13,16 @@ const defaultDate = dayjs().format('YYYY-MM-DDHH:mm');
 
 const FilterTimeOfWeek = () => {
   const { t } = useTranslation();
+  const [currentTime, setCurrentTime] = useState(
+    dayjs().format('YYYY-MM-DDHH:mm'),
+  );
   const { setOpenSpecificTime, clearOpening } = useRestaurantStore();
 
   const onChange = useCallback(
     (date: string | null) => {
       console.log({ date });
       if (date != null) {
+        setCurrentTime(date);
         setOpenSpecificTime(formatFilterDate(date));
       } else {
         clearOpening();
@@ -33,9 +39,17 @@ const FilterTimeOfWeek = () => {
     <DateTimePicker
       label={t('map.pick')}
       radius="md"
-      w="50%"
-      defaultValue={defaultDate}
       onChange={onChange}
+      value={currentTime}
+      rightSection={
+        <ActionIcon
+          onClick={() => {
+            setCurrentTime(dayjs().format('YYYY-MM-DDHH:mm'));
+          }}
+        >
+          <IconRestore />
+        </ActionIcon>
+      }
     />
   );
 };
