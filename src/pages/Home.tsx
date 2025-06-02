@@ -1,4 +1,4 @@
-import { Container, Fieldset, Group, Tabs } from '@mantine/core';
+import { Container, Fieldset, SimpleGrid, Tabs } from '@mantine/core';
 import { useTranslation } from 'react-i18next';
 
 import Filters from '../features/Filters/Filters';
@@ -14,10 +14,10 @@ const HomePage = () => {
   return (
     <Container size="xl" px="md" py="xl">
       <Fieldset legend="Search">
-        <Group justify="space-between" wrap="nowrap">
+        <SimpleGrid cols={{ base: 1, sm: 2 }} spacing="lg">
           <SearchBar />
           <RandomButton />
-        </Group>
+        </SimpleGrid>
       </Fieldset>
       <Fieldset legend="Filters">
         <Filters />
