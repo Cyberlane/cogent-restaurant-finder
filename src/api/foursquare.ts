@@ -128,7 +128,7 @@ export class FourSquareApi {
     });
 
     if (category != null) {
-      params.append('categories', `${Categories[category]}`);
+      params.append('categories', `${Categories[category].id}`);
     } else {
       params.append('categories', AllCategories);
     }
