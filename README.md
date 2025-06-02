@@ -51,7 +51,7 @@ I personally have not touched WebPack in a number of years. I know my way around
 
 ### Vitest (Testing)
 
-Since I am using Vite, it just makes to use this when I am using Vite for building, plus it is very easy to use.
+Since I am using Vite, it just makes sense to use this when I am using Vite for building, plus it is very easy to use.
 
 ### Biome (Linting)
 
@@ -73,7 +73,7 @@ Google Maps is great, but it is quite heavy on the browser, plus you need to get
 
 ### Tabler Icons
 
-Icons were neededs, and this recommended by Mantine UI, so I just went with it. I have no specific reason for this to be better or worse than any other.
+Icons were needed, and this recommended by Mantine UI, so I just went with it. I have no specific reason for this to be better or worse than any other.
 
 ### DayJS
 
@@ -127,7 +127,7 @@ I only included a few small unit tests, there are a number more I could add, but
 
 Outside of that, I feel testing on the frontend is quite a tricky subject. Some teams feel there is no value since the tests are slowing you down from doing any quick changes to the UI/UX. Whilst some other teams feel they need all the testing, especially with browser snapshots to ensure everything is as expected.
 
-Since it was no vital for this given project, I felt I would leave it out but write about it instead.
+Since it was not vital for this given project, I felt I would leave it out but write about it instead.
 
 ## Project Structure
 
@@ -163,7 +163,7 @@ All of the translation files live in this folder, following pretty standard i18n
 
 ### /assets/images/*
 
-Static images that are bundled within the codebase, I put in this folder. If there is a lot of them and they have to live in this repo (maybe the they are part of the UI for the app), I often like to group them in sub-folders.
+Static images that are bundled within the codebase, I put in this folder. If there is a lot of them and they have to live in this repo (maybe they are part of the UI for the app), I often like to group them in sub-folders.
 
 ### /common/*
 
@@ -222,7 +222,7 @@ Not to be confused with values from environment variables, but any time there ar
 ### /main.tsx
 
 Entry point into the application. You will also find all of the Providers here as well.
-Sometimes the providers are s
+Sometimes the providers are split out into a `App.tsx` file, but for simplicity I kept them in one file.
 
 ### /routeTree.gen.ts
 
