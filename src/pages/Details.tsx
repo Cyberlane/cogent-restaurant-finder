@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 
 import MarkedMap from '../components/MarkedMap';
 import { restaurantToMarker } from '../components/MarkedMap.utils';
+import { officeMarker } from '../components/MarkedMap.utils';
 import PhotoGrid from '../components/PhotoGrid';
 import Rating from '../components/Rating';
 import RestaurantAddress from '../components/RestaurantAddress';
@@ -66,7 +67,7 @@ const DetailsPage = () => {
             leftSection={<IconMap style={{ marginRight: '10px' }} />}
             active
           />
-          <MarkedMap markers={[restaurantToMarker(details)]} />
+          <MarkedMap markers={[restaurantToMarker(details), officeMarker]} />
         </Tabs.Panel>
       </Tabs>
     </Container>
