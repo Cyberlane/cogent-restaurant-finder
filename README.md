@@ -38,6 +38,7 @@ This repository is my submission for a code assignment given to me (Justin Nel) 
   - [Opening Hours](#opening-hours)
 - [Project Structure](#project-structure)
 - [Getting Started](#getting-started)
+- [Usage](#usage)
 - [Testing](#testing)
 - [Extra Credits](#extra-credits)
 
