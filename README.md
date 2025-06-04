@@ -186,7 +186,7 @@ Below is a tree structure matching the `/src` folder contents, which links to my
 - [/styles](#styles)
 - [/test](#test)
 - [/types](#types)
-- /utils
+- [/utils](#utils)
 - [/constants.ts](#constantsts)
 - [/main.tsx](#maintsx)
 - [/routeTree.gen.ts](#routetreegents)
