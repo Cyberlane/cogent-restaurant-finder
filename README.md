@@ -32,6 +32,10 @@ This repository is my submission for a code assignment given to me (Justin Nel) 
   - [Where is Axios?](#where-is-axios)
   - [What about Storybook?](#what-about-storybook)
   - [Where are all the tests?](#where-are-all-the-tests)
+- [Areas for Improvement](#areas-for-improvement)
+  - [API Abstraction](#api-abstraction)
+  - [Eating Options](#eating-options)
+  - [Opening Hours](#opening-hours)
 - [Project Structure](#project-structure)
 - [Getting Started](#getting-started)
 - [Testing](#testing)
@@ -128,6 +132,40 @@ I only included a few small unit tests, there are a number more I could add, but
 Outside of that, I feel testing on the frontend is quite a tricky subject. Some teams feel there is no value since the tests are slowing you down from doing any quick changes to the UI/UX. Whilst some other teams feel they need all the testing, especially with browser snapshots to ensure everything is as expected.
 
 Since it was not vital for this given project, I felt I would leave it out but write about it instead.
+
+## Areas for Improvement
+
+### API Abstraction
+
+Further abstraction from FourSquare and try to have standardized types, this way it would be easy to replace FourSquare with something else later on, or even have an option to fetch data from different sources.
+
+### Eating Options
+
+The assignment was asking for `Lunch`, however to not have pages too empty I added in the following:
+
+![Food Options](/docs/images/eating-options.png)
+
+So realistically, this could be removed and instead a data filter could be made on restaurants that offer "Lunch", and if they say "No" on lunch, to simply not show them in the search results.
+
+### Opening Hours
+
+Sometimes the data provided by `Opening Hours` from the API, is messy since the restaurant might close more than once per day, or even is open 24/7, so the data tends to render a bit confusingly. See below:
+
+![Opening Hours Multi](/docs/images/opening-hours-multi.png)
+
+There are a number of ways to render this better, but this tends to be an area I like to open a discussion and see what people think is best. Common ways I have seen are making a horizontal bar chart with gaps where the restaurant is closed (or even different colours), another would be to group the hours into chunks.
+
+Most of which might need some pre-processing of the data, which would fall nicely into a helper function with some unit tests.
+
+### Office on the Map
+
+I tried to make the office on the map stand out a bit by making the marker a different colour, but it is far from obvious as you can see below. I think there are a few different ways to try solve this, one is using a different map (or looking to see if you can change the colours used by the current map), so you can add Markers which stand out better.
+
+![Office on the Map](/docs/images/office-map.png)
+
+### Scroll to Top
+
+When there are a lot of results on a single page, it's often a good idea to have a little "scroll to top of page" button floating on the right of the page.
 
 ## Project Structure
 
@@ -267,6 +305,24 @@ npm run dev
 ```
 
 Alternatively, you can view the website here: [https://cogent-labs-lunch.web.app/](https://cogent-labs-lunch.web.app/)
+
+## Usage
+
+Open the website, by default you will see all results for restaurants within 1km of the office in a `List`. If you rather see those in a `Map`, you can click on the `Map` tab as seen below.
+
+![List and Map of results](/docs/images/list-map.png)
+
+Searching for results is pretty straight forward, type in whatever keywords you want and they will reach the FourSquare API.
+
+The `I'm Feeling Lucky` button will randomly pick a restaurant from the results in your search results. This does not randomise the search, it makes use of your current search results. I did consider making it do random based on all restaurants, but then I thought personally, I often think "I know I want sushi, but I have no idea where I want to eat", so it makes use of your existing filters.
+
+You can filter by Restaurant Category (these are provided by FourSquare). I included the `Food Stand` option with no results on purpose, to simply show how I handle `No Restaurants Found`.
+
+Budget from the FourSquare API allowed you to use a min/max range for pricing, but honestly, I think the UI/UX for handling that range can be tricky, so I went the simple route and allowed the user to say `Any` or `Specifically this price`.
+
+The `Pick a date and time` filters restaurants that are open at the date/time specified. By default this will populate with the current date and time from your browser. You can easily pick another time or day, and it will filter via the API, and if you want to resort to "now", just press the `Blue reset` button on the right.
+
+![Reset date/time](/docs/images/reset-time.png)
 
 ## Testing
 
